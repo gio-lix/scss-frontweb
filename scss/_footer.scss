@@ -1,0 +1,106 @@
+.footer {
+  background-color: $darkBlue;
+  color: $white;
+  padding: 2.5rem;
+  text-align: center;
+
+  @include breakpoints-up(large) {
+    display: grid;
+    //grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr) 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-template-areas:
+            "logo links1 links2 cta"
+            "social links1 links2 copyright";
+    justify-content: start;
+  }
+
+  a {
+    color: $white;
+  }
+
+  &__logo {
+    display: inline-block;
+
+    @include breakpoints-down(medium) {
+      margin-bottom: 1.187rem;
+
+    }
+    @include breakpoints-up(large) {
+      grid-area: logo;
+    }
+  }
+
+  &__social {
+    @include breakpoints-down(medium) {
+      margin-bottom: 1.187rem;
+
+    }
+    @include breakpoints-up(large) {
+      grid-area: social;
+    }
+
+    a {
+      display: inline-block;
+    }
+
+    a:not(:last-child ) {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    @include breakpoints-up(large) {
+      align-items: start;
+    }
+
+    &.col1 {
+      @include breakpoints-up(large) {
+        grid-area: links1;
+      }
+    }
+
+    &.col2 {
+      @include breakpoints-down(medium) {
+        margin-bottom: 1.875rem;
+      }
+
+      @include breakpoints-up(large) {
+        grid-area: links2;
+      }
+    }
+    a {
+      line-height: 2.25rem;
+    }
+  }
+
+  &__cta {
+    @include breakpoints-up(large) {
+      grid-area: cta;
+      text-align: right;
+      justify-self: end;
+    }
+    a {
+      justify-self: end;
+      @include breakpoints-down(medium) {
+        margin-bottom: 1.875rem;
+      }
+    }
+  }
+
+  &__copyright {
+    @include  breakpoints-up(large) {
+      grid-area: copyright;
+      align-self: end;
+      justify-self: end;
+    }
+  }
+}
